@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="text-center">
+        <h2>Your portfolios</h2>
+        <h4>Find all real time data of your stocks here</h4>
+    </div>
+    <div class="row">
+        <div ng-repeat="pf in vm.portfolioData" class="col-sm-4 col-xs-12">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading" style="height:150px">
+                    <h3>{{pf.data.query.results.quote.Name}} &nbsp; ({{pf.data.query.results.quote.symbol}})</h3>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Last Trade Price</strong>&nbsp;{{pf.data.query.results.quote.LastTradePriceOnly | currency}}&nbsp;<span class="glyphicon glyphicon-arrow-up" style="color: green" ng-if="pf.data.query.results.quote.up">({{pf.data.query.results.quote.up | number: 2}})%</span> &nbsp;<span class="glyphicon glyphicon-arrow-down" style="color: red" ng-if="pf.data.query.results.quote.down">({{pf.data.query.results.quote.down | number: 2}})%</span></p>
+                    <strong>No. of Shares</strong>&nbsp;<input type="number" min="0" ng-model="pf.data.query.results.numberOfShares" style="width: 55px">
+                    <p><strong>Stake Value</strong>&nbsp;{{(pf.data.query.results.numberOfShares)*(pf.data.query.results.quote.LastTradePriceOnly) | currency}}</p>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-lg" ng-click="updatePortfolio(pf.data.query.results)">Save</button>
+                    <button class="btn btn-lg" ng-click="deleteStock(pf.data.query.results)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="jumbotron text-center">
+    <h1>Stockfolio</h1>
+    <p>You can add your portfolios by entering any symbol. You still have {{5-vm.portfolioData.length}} left</p>
+    <form>
+        <div class="input-group">
+            <input class="form-control" size="50" ng-model="vm.searchSymbol" placeholder="Please enter a valid symbol" required>
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-danger" ng-disabled="vm.searchSymbol.length===0" ng-click="getSymbolData(vm.searchSymbol); showSearch=true">Search</button>
+            </div>
+        </div>
+        <p class="text-danger" ng-if="vm.searchSymbol && vm.searchSymbol.length===0">Please select valid symbol.</p>
+    </form>
+</div>
+<div ng-if="showSearch && vm.searchResults.length>0" ng-include="'webapp/dashboard/partials/search-results.html'"></div>
+<div ng-if="$state.includes('dashboard')" ng-include="'webapp/dashboard/partials/saved-portfolios.html'" class="container-fluid"></div>
+
