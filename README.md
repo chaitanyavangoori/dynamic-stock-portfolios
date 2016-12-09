@@ -3,7 +3,7 @@
 ABOUT
 ===========================================================
 This applications saves user stock portfolios and gives live updates of their share price, percentage of last changed value to current,
-market stake.
+market stake using Yahoo Finance API.
 This application is developed using Spring Boot, AngularJS 1.3
 
 START
